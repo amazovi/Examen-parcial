@@ -1,6 +1,9 @@
 package es.cic.curso.ejercicio4.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +13,8 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Pelicula {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank(message = "El título no puede estar vacío")
@@ -19,8 +24,8 @@ public class Pelicula {
     @Min(value = 1900, message = "El año debe ser como mínimo 1900")
     private int ano;
 
+    @OneToOne
     private Director director;
-
 
     public Pelicula() {
     }
@@ -56,7 +61,6 @@ public class Pelicula {
         this.ano = ano;
     }
 
-    @OneToOne
     public Director getDirector() {
         return director;
     }
@@ -64,8 +68,4 @@ public class Pelicula {
     public void setDirector(Director director) {
         this.director = director;
     }
-
-
 }
-    
-

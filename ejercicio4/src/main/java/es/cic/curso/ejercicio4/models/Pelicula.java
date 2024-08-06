@@ -5,7 +5,11 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+
+
 public class Pelicula {
+
+    private Long id;
 
     @NotBlank(message = "El título no puede estar vacío")
     @Size(min = 1, max = 100, message = "El título debe tener entre 1 y 100 caracteres")
@@ -20,35 +24,38 @@ public class Pelicula {
     public Pelicula() {
     }
 
-
-    public Pelicula(String titulo, int ano, Director director) {
+    public Pelicula(Long id, String titulo, int ano, Director director) {
+        this.id = id;
         this.titulo = titulo;
         this.ano = ano;
         this.director = director;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
     }
 
-
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
 
     public int getAno() {
         return ano;
     }
 
-
     public void setAno(int ano) {
         this.ano = ano;
     }
 
-
-   @OneToOne
+    @OneToOne
     public Director getDirector() {
         return director;
     }
@@ -56,6 +63,8 @@ public class Pelicula {
     public void setDirector(Director director) {
         this.director = director;
     }
+
+
 }
     
 

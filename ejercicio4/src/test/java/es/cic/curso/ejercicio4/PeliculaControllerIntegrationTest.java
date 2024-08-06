@@ -1,9 +1,10 @@
 package es.cic.curso.ejercicio4;
 
+import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-
-import org.hibernate.engine.internal.Collections;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,25 +21,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.cic.curso.ejercicio4.models.Director;
 import es.cic.curso.ejercicio4.models.Pelicula;
-import es.cic.curso.ejercicio4.repository.DirectorRepository;
-import es.cic.curso.ejercicio4.repository.PeliculaRepository;
-import es.cic.curso.ejercicio4.service.DirectorService;
 import es.cic.curso.ejercicio4.service.PeliculaService;
-import jakarta.transaction.Transactional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-
 public class PeliculaControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
-    private PeliculaRepository peliculaRepository;
-
-    @Autowired
-    private DirectorRepository directorRepository;
+    @MockBean
+    private PeliculaService peliculaService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -46,20 +39,29 @@ public class PeliculaControllerIntegrationTest {
     private Pelicula pelicula;
     private Director director;
 
-   @BeforeEach
-   void setUp() throws Exception {
-    
-    // Configura la película
-    pelicula = new Pelicula(1L, "Inception", 2010, director);
-    pelicula = peliculaRepository.save(pelicula);
-}
+    @BeforeEach
+    void setUp() throws Exception {
+        // Inicializa los datos de prueba
+        director = new Director();  
+        director.setId(1L);  
+        director.setNombre("Christopher Nolan");
+        director.setAno(1970);
+        
+        pelicula = new Pelicula();
+        pelicula.setId(1L);
+        pelicula.setTitulo("Inception");
+        pelicula.setAno(2010);
+        pelicula.setDirector(director);
 
+        // Configura los mocks
+        when(peliculaService.findById(1L)).thenReturn(pelicula);
+        when(peliculaService.findAll()).thenReturn(List.of(pelicula));
+        when(peliculaService.save(any(Pelicula.class))).thenAnswer(invocation -> invocation.getArgument(0));
+    }
 
     @AfterEach
     void tearDown() {
-        // Limpia la base de datos eliminando todas las películas y directores
-        peliculaRepository.deleteAll();
-
+        // No se necesita limpiar la base de datos, ya que usamos mocks
     }
 
     @Test

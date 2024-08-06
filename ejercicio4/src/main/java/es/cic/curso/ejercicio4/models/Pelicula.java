@@ -1,12 +1,13 @@
 package es.cic.curso.ejercicio4.models;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 
-
+@Entity
 public class Pelicula {
 
     private Long id;

@@ -1,4 +1,8 @@
-package test.java.es.cic.curso;
+package es.cic.curso;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 public class AlgoritmoTest {
 

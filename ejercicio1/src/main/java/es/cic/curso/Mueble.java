@@ -1,5 +1,5 @@
 
-package main.java.es.cic.curso;
+package es.cic.curso;
 
 public class Mueble {
     private String material;

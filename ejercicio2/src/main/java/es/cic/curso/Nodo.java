@@ -1,4 +1,4 @@
-package main.java.es.cic.curso;
+package es.cic.curso;
 
 /*
  * Con esta clase defino la estructura con una variable numérica y un nombre que solo necesitamos para los números pares

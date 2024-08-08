@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>es.cic.curso</groupId>
-	<artifactId>ejercicio4</artifactId>
+	<artifactId>ejercicio5</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ejercicio4</name>
+	<name>ejercicio5</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -57,20 +57,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>3.9.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

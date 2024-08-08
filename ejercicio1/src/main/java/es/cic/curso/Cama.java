@@ -1,4 +1,4 @@
-package main.java.es.cic.curso;
+package es.cic.curso;
 
 public class Cama extends Mueble {
     private String tamaño;

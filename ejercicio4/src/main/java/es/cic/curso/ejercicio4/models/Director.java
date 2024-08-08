@@ -2,6 +2,7 @@ package es.cic.curso.ejercicio4.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,10 +23,10 @@ public class Director {
     @Size(min = 1, max = 20)
     private String nombre;
 
-    @Min(1900)
+    @Min(1930) // Año mínimo permitido para el nacimiento de un director
     private int ano;
 
-    @OneToMany(mappedBy = "director")
+    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pelicula> peliculas;
 
     public Director() {}

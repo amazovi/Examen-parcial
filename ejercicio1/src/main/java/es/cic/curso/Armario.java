@@ -1,4 +1,4 @@
-package main.java.es.cic.curso;
+package es.cic.curso;
 
 public class Armario extends Mueble implements Compuertas {
     private int numCompuertas;
